@@ -37,7 +37,7 @@
             for (int i = 0; i < numbers.Length; i++)
             {
                 int randomIndex = random.Next(0, numbers.Length);
-                numbers = SwapNumbers(numbers, i, randomIndex);
+                SwapNumbers(numbers, i, randomIndex);
             }
         }
 
@@ -49,13 +49,11 @@
             }
         }
 
-        private static int[] SwapNumbers(int[] array, int firstIndex, int secondIndex)
+        private static void SwapNumbers(int[] array, int firstIndex, int secondIndex)
         {
             int numberBuffer = array[firstIndex];
             array[firstIndex] = array[secondIndex];
             array[secondIndex] = numberBuffer;
-
-            return array;
         }
     }
 }
