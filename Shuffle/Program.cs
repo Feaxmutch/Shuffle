@@ -4,20 +4,20 @@
     {
         static void Main(string[] args)
         {
-            int[] array = GenerateArray(10, 0, 9);
+            int[] numbers = GenerateNumbers(10, 0, 9);
 
             Console.WriteLine("Сгенерированый массив:");
-            WriteNumbers(array);
+            WriteNumbers(numbers);
 
-            Shuffle(array);
+            Shuffle(numbers);
 
             Console.WriteLine("\n\n" + "Перемешанный массив:");
-            WriteNumbers(array);
+            WriteNumbers(numbers);
 
             Console.ReadKey();
         }
 
-        private static int[] GenerateArray(int lenght, int minNumber, int maxNumber)
+        private static int[] GenerateNumbers(int lenght, int minNumber, int maxNumber)
         {
             int[] array = new int[lenght];
             Random random = new Random();
@@ -30,14 +30,14 @@
             return array;
         }
 
-        private static void Shuffle(int[] array)
+        private static void Shuffle(int[] numbers)
         {
             Random random = new Random();
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                int IndexForSwap = (random.Next(1, array.Length) + i) % array.Length;
-                array = SwapNumbers(array, i, IndexForSwap);
+                int randomIndex = random.Next(0, numbers.Length);
+                numbers = SwapNumbers(numbers, i, randomIndex);
             }
         }
 
@@ -51,15 +51,6 @@
 
         private static int[] SwapNumbers(int[] array, int firstIndex, int secondIndex)
         {
-            if (firstIndex >= array.Length || secondIndex >= array.Length)
-            {
-                throw new IndexOutOfRangeException();
-            }
-            else if (firstIndex == secondIndex)
-            {
-                return array;
-            }
-
             int numberBuffer = array[firstIndex];
             array[firstIndex] = array[secondIndex];
             array[secondIndex] = numberBuffer;
